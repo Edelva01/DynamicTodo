@@ -3,10 +3,88 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dynamic Todo</title>
+    <title>Sample Web Page</title>
+    <style>
+        /* Basic Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Page Layout */
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            color: #333;
+        }
+
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        main {
+            flex: 1;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        footer {
+            background-color: #f1f1f1;
+            text-align: center;
+            padding: 1rem;
+            font-size: 0.9rem;
+            color: #555;
+        }
+
+        /* Sample Content Styling */
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        p {
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        a.button {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            margin-top: 1rem;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        a.button:hover {
+            background-color: #45a049;
+        }
+    </style>
 </head>
 <body>
-    <h1>Hello World of To-Do</h1>
-    <p>This is new to update</p>
+
+    <header>
+        <h1>Welcome to My Sample Web Page</h1>
+    </header>
+
+    <main>
+        <h2>About This Page</h2>
+        <p>This is a simple HTML page with embedded CSS styles in the head section.</p>
+        <p>The layout includes a header, a main content section, and a footer.</p>
+        <a href="#" class="button">Learn More</a>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 My Web Page. All rights reserved.</p>
+    </footer>
+
 </body>
 </html>
