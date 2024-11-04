@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sample Web Page</title>
+    <title>Dynamic To-Do List</title>
     <style>
         /* Basic Reset */
         * {
@@ -12,79 +12,156 @@
             box-sizing: border-box;
         }
 
-        /* Page Layout */
+        /* Styling the body and layout */
         body {
             font-family: Arial, sans-serif;
             display: flex;
-            flex-direction: column;
+            justify-content: center;
+            align-items: center;
             min-height: 100vh;
+            background-color: #f7f7f7;
             color: #333;
         }
 
-        header {
-            background-color: #4CAF50;
-            color: white;
-            padding: 1rem;
-            text-align: center;
-        }
-
-        main {
-            flex: 1;
+        /* Container for the to-do list */
+        .todo-container {
+            background: #fff;
             padding: 2rem;
+            width: 100%;
+            max-width: 400px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
             text-align: center;
         }
 
-        footer {
-            background-color: #f1f1f1;
-            text-align: center;
-            padding: 1rem;
-            font-size: 0.9rem;
-            color: #555;
-        }
-
-        /* Sample Content Styling */
+        /* Title */
         h1 {
-            font-size: 2rem;
+            font-size: 1.5rem;
             margin-bottom: 1rem;
+            color: #4CAF50;
         }
 
-        p {
+        /* Input field */
+        input[type="text"] {
+            width: 80%;
+            padding: 0.5rem;
             margin-bottom: 1rem;
-            line-height: 1.6;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 1rem;
         }
 
-        a.button {
-            display: inline-block;
+        /* Add button */
+        button.add-btn {
             padding: 0.5rem 1rem;
-            margin-top: 1rem;
             background-color: #4CAF50;
             color: white;
-            text-decoration: none;
-            border-radius: 5px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem;
             transition: background-color 0.3s ease;
         }
 
-        a.button:hover {
+        button.add-btn:hover {
             background-color: #45a049;
+        }
+
+        /* Task list */
+        ul {
+            list-style-type: none;
+            margin-top: 1rem;
+        }
+
+        /* Task items */
+        li {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #eee;
+            font-size: 1rem;
+        }
+
+        /* Task text */
+        .task-text {
+            flex: 1;
+            text-align: left;
+        }
+
+        /* Completed task */
+        .completed {
+            text-decoration: line-through;
+            color: #999;
+        }
+
+        /* Delete button */
+        button.delete-btn {
+            background-color: #e74c3c;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 0.2rem 0.5rem;
+            cursor: pointer;
+            font-size: 0.8rem;
+            transition: background-color 0.3s ease;
+        }
+
+        button.delete-btn:hover {
+            background-color: #c0392b;
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <h1>Welcome to My Sample Web Page</h1>
-    </header>
+    <div class="todo-container">
+        <h1>My To-Do List</h1>
+        <input type="text" id="taskInput" placeholder="Add a new task">
+        <button class="add-btn" onclick="addTask()">Add Task</button>
+        <ul id="taskList"></ul>
+    </div>
 
-    <main>
-        <h2>About This Page</h2>
-        <p>This is a simple HTML page with embedded CSS styles in the head section.</p>
-        <p>The layout includes a header, a main content section, and a footer.</p>
-        <a href="#" class="button">Learn More</a>
-    </main>
+    <script>
+        // Function to add a task
+        function addTask() {
+            const taskInput = document.getElementById('taskInput');
+            const taskText = taskInput.value.trim();
 
-    <footer>
-        <p>&copy; 2024 My Web Page. All rights reserved.</p>
-    </footer>
+            if (taskText === "") {
+                alert("Please enter a task.");
+                return;
+            }
+
+            // Create a new list item (task)
+            const li = document.createElement('li');
+
+            // Task text with click event to mark complete
+            const taskSpan = document.createElement('span');
+            taskSpan.className = 'task-text';
+            taskSpan.innerText = taskText;
+            taskSpan.onclick = () => {
+                taskSpan.classList.toggle('completed');
+            };
+
+            // Delete button
+            const deleteBtn = document.createElement('button');
+            deleteBtn.className = 'delete-btn';
+            deleteBtn.innerText = 'Delete';
+            deleteBtn.onclick = () => {
+                li.remove();
+            };
+
+            // Append task text and delete button to list item
+            li.appendChild(taskSpan);
+            li.appendChild(deleteBtn);
+
+            // Append list item to the task list
+            document.getElementById('taskList').appendChild(li);
+
+            // Clear the input field
+            taskInput.value = '';
+        }
+    </script>
 
 </body>
 </html>
