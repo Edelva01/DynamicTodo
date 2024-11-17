@@ -1,0 +1,15 @@
+{
+    "name": "dynamic-todo-app",
+    "version": "1.0.0",
+    "description": "A dynamic to-do list application served locally",
+    "main": "server.js",
+    "scripts": {
+      "start": "node server.js"
+    },
+    "dependencies": {
+      "express": "^4.18.2"
+    },
+    "author": "Eloi Delva",
+    "license": "ISC"
+  }
+  
